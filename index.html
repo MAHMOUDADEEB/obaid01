@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>محمد الحسيني — طلبات الجملة</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="msg" id="msg"></div>
+
+<!-- ===== واجهة الزبائن ===== -->
+<div id="shop">
+  <section class="hero">
+    <canvas id="cv"></canvas>
+    <div class="t">
+      <small>توزيع الجملة</small>
+      <h1>حلاوة تليق بمحلّك</h1>
+      <p>اختر أصنافك بكل سهولة، وتصلك الفاتورة مباشرة على واتساب.</p>
+      <button class="btn" onclick="document.getElementById('prods').scrollIntoView()">ابدأ الطلب</button>
+    </div>
+  </section>
+  <div class="wrap">
+    <h2>بيانات الزبون</h2>
+    <p class="sub">اختر اسم السوبرماركت من القائمة، أو أضفه لمرة واحدة فقط.</p>
+    <div class="box">
+      <div class="row">
+        <select id="cs" onchange="custChange()"></select>
+      </div>
+      <div class="row hide" id="nc" style="margin-top:10px">
+        <input id="cn" placeholder="اسم السوبرماركت">
+        <input id="cp" placeholder="رقم الواتساب (مثال 0791234567)" inputmode="tel">
+      </div>
+    </div>
+    <h2 id="prods">الأصناف</h2>
+    <p class="sub">حدّد الكمية لكل صنف.</p>
+    <div class="grid" id="pg"></div>
+  </div>
+  <footer>© محمد الحسيني · <a onclick="goAdmin()">دخول الإدارة</a></footer>
+  <div class="bar" id="bar">
+    <div><small id="bc">0 أصناف</small><br><b id="bt">0.00 د.أ</b></div>
+    <button class="btn" id="sb" onclick="submitOrder()">إرسال الطلب</button>
+  </div>
+</div>
+
+<!-- ===== الإدارة ===== -->
+<div id="admin" class="hide">
+  <div class="wrap">
+    <div class="row" id="ah" style="justify-content:space-between;margin-top:24px">
+      <h2 style="margin:0">لوحة الإدارة</h2>
+      <div class="row"><button class="btn o s" onclick="goShop()">صفحة الزبائن</button><button class="btn o s hide" id="lo" onclick="logout()">خروج</button></div>
+    </div>
+    <div id="login" class="lg"><div class="lgc">
+      <div class="lk"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+      <h3>دخول الإدارة</h3><p class="sub">أدخل بياناتك للمتابعة</p>
+      <label>اسم المستخدم<input id="u" autocomplete="off" autocapitalize="none" spellcheck="false"></label>
+      <label>كلمة السر<input id="w" type="password" autocomplete="off" onkeydown="if(event.key==='Enter')login()"></label>
+      <button class="btn" onclick="login()">دخول</button>
+      <a onclick="goShop()">العودة لصفحة الزبائن</a>
+    </div></div>
+    <div id="panel" class="hide">
+      <div class="tabs" id="tabs"></div>
+      <div id="tab"></div>
+    </div>
+  </div>
+</div>
+
+<div id="md" style="position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;place-items:center;padding:18px;z-index:60"></div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
